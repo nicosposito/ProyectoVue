@@ -44,8 +44,6 @@ export default {
     agregarPelicula(pelicula) {
      this.peliculas.push(pelicula);
      this.copiaPeliculas = [...this.peliculas];
-     this.peliculas.forEach(element => console.log(element.nombre));
-
     },
 
     eliminarPelicula(nombre) {
