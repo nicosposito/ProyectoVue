@@ -41,7 +41,7 @@
       required
     ></Datepicker>
 
-    <br>
+    <br />
     <div class="d-flex justify-space-around">
       <v-btn class="success">Agregar pelicula</v-btn>
       <v-btn>Cancelar</v-btn>
@@ -72,6 +72,19 @@ export default {
         "Terror",
       ],
     };
+  },
+  methods: {
+    agregarPelicula: function () {
+      const newPelicula ={
+        nombre: this.nombre,
+        sinopsis: this.sinopsis,
+        director: this.director,
+        fechaEstreno: this.fechaEstreno,
+        genero:this.genero,
+        duracion: this.duracion
+      };
+      
+    },
   },
 };
 </script>

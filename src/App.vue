@@ -1,6 +1,6 @@
 <template>
   <v-app>
-      <app-nav :key="componentKey"></app-nav>
+    <app-nav :key="componentKey"></app-nav>
   </v-app>
 </template>
 
@@ -17,12 +17,33 @@ export default {
   data() {
     return {
       componentKey: 0,
+      peliculas: [
+        {
+          nombre: "Peli1",
+          sinopsis: "asd",
+          director: "asd",
+          fechaEstreno: "14-04-2022",
+          genero: "asd",
+          duracion: "145",
+        },
+      ],
+      copiaPeliculas:[]
     };
   },
   methods: {
     forceRerender() {
       this.componentKey += 1;
     },
+    agregarPelicula(pelicula) {
+      this.peliculas.push(pelicula);
+      this.copiaPeliculas = [...this.peliculas];
+    },
+
+    eliminarPelicula(nombre) {
+      this.peliculas = this.peliculas.filter(pelicula => pelicula.nombre != nombre);
+      this.copiaPeliculas = [...this.peliculas];
+    }
+
   },
   components: {
     AppNav,
