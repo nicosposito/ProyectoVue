@@ -13,7 +13,14 @@ export default {
     this.eventBus.on("recargar", (opc) => {
       this.forceRerender();
     });
+    this.eventBus.on("agregarPelicula", (pelicula) => {
+      this.agregarPelicula(pelicula);
+    });
+    this.eventBus.on("eliminarPelicula", (nombre) => {
+      this.eliminarPelicula(nombre);
+      });
   },
+  
   data() {
     return {
       componentKey: 0,
@@ -35,8 +42,10 @@ export default {
       this.componentKey += 1;
     },
     agregarPelicula(pelicula) {
-      this.peliculas.push(pelicula);
-      this.copiaPeliculas = [...this.peliculas];
+     this.peliculas.push(pelicula);
+     this.copiaPeliculas = [...this.peliculas];
+     this.peliculas.forEach(element => console.log(element.nombre));
+
     },
 
     eliminarPelicula(nombre) {

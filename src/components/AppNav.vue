@@ -60,6 +60,7 @@ export default {
       console.log(this.esAdm);
     }
   },
+
 };
 </script>
 

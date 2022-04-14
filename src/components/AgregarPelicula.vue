@@ -1,5 +1,5 @@
 <template>
-  <v-form ref="form" v-model="valid" lazy-validation>
+  <v-form @submit.prevent="addNuevaPelicula" lazy-validation>
     <v-text-field
       v-model="nombre"
       label="Nombre de la pelicula"
@@ -10,7 +10,6 @@
 
     <v-text-field
       v-model="director"
-      :rules="nameRules"
       label="Nombre del director"
       required
     ></v-text-field>
@@ -41,9 +40,9 @@
       required
     ></Datepicker>
 
-    <br />
+    <br/>
     <div class="d-flex justify-space-around">
-      <v-btn class="success">Agregar pelicula</v-btn>
+      <v-btn  type="submit" absoluteclass="success">Agregar pelicula</v-btn>
       <v-btn>Cancelar</v-btn>
     </div>
   </v-form>
@@ -74,7 +73,7 @@ export default {
     };
   },
   methods: {
-    agregarPelicula: function () {
+    addNuevaPelicula: function () {
       const newPelicula ={
         nombre: this.nombre,
         sinopsis: this.sinopsis,
@@ -83,7 +82,7 @@ export default {
         genero:this.genero,
         duracion: this.duracion
       };
-      
+      this.eventBus.emit('agregarPelicula', newPelicula);
     },
   },
 };
