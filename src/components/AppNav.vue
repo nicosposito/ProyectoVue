@@ -1,4 +1,5 @@
 <template>
+<v-app>
     <v-toolbar v-if="!$route.meta.hideNavbar" app color="blue">
       <v-app-bar-nav-icon @click="mostrar = !mostrar"></v-app-bar-nav-icon>
       <v-toolbar-title class="flex text-center">Prueba</v-toolbar-title>
@@ -28,14 +29,14 @@
 
         <v-list density="compact" nav v-if="nombreUsuario != ''">
           <v-list-item title="Agregar pelicula" value="AP" to="/agregarPelicula"></v-list-item>
-          <v-list-item title= "Eliminar pelicula" value="EP"> </v-list-item>
+          <v-list-item title= "Eliminar pelicula" value="EP" :to="{ name:'eliminarPelicula' }"> </v-list-item>
         </v-list>
 
          <v-list density="compact" v-if="nombreUsuario == ''">
             <v-list-item title="Iniciar sesión" value="IS" to="/iniciarSesion"></v-list-item>
          </v-list>
       </v-navigation-drawer>
-
+</v-app>
 </template>
 <script>
 export default {

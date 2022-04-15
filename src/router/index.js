@@ -27,11 +27,14 @@ const routes = [
     path: '/agregarPelicula',
     name: 'agregarPelicula',
     component: () => import(/* webpackChunkName: "about" */ '../views/AgregarPeliculaView.vue'),
-    meta: {
-      hideNavbar: false,
-     }
-  }
 
+  },
+  {
+    path: '/eliminarPelicula',
+    name: 'eliminarPelicula',
+    component: () => import(/* webpackChunkName: "about" */ '../views/EliminarPeliculaView.vue'),
+    props: true,
+  }
 
 ]
 

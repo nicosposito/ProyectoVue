@@ -1,7 +1,7 @@
 <template>
-  <v-app>
+
     <app-nav :key="componentKey"></app-nav>
-  </v-app>
+  
 </template>
 
 
