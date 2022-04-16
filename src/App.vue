@@ -1,12 +1,10 @@
 <template>
   <app-nav :key="componentKey" v-bind:lista="peliculas"></app-nav>
-    <eliminar-pelicula v-if="false" v-bind:listap="peliculas" />
 </template>
 
 
 <script>
 import AppNav from "./components/AppNav.vue";
-import EliminarPelicula from "./components/EliminarPelicula.vue";
 
 export default {
   created: function () {
@@ -69,7 +67,6 @@ export default {
   },
   components: {
     AppNav,
-    EliminarPelicula,
   },
 };
 </script>

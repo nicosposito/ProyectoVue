@@ -4,13 +4,17 @@
     <v-form @submit.prevent="addNuevaPelicula" lazy-validation class="px-3">
       <v-row>
         <v-col md="6">
-          <v-text-field v-model="nombre" label="Nombre" required></v-text-field>
+          <v-text-field v-model="nombre" label="Nombre" required
+          :rules="[(v) => !!v || 'El nombre de la pelicula es necesario']"></v-text-field>
 
-          <v-textarea v-model="sinopsis" label="Sinopsis" required></v-textarea>
+          <v-textarea v-model="sinopsis" label="Sinopsis" required
+          :rules="[(v) => !!v || 'La sinopsis es necesaria']"
+          ></v-textarea>
 
           <v-text-field
             v-model="director"
             label="Nombre del director"
+            :rules="[(v) => !!v || 'El nombre del director es necesario']"
             required
           ></v-text-field>
 
@@ -33,6 +37,7 @@
             type="number"
             :min="1"
             required
+            :rules="[(v) => !!v || 'La duracion es necesaria']"
           ></v-text-field>
 
           <label id="estreno"> Fecha de estreno </label>
@@ -43,6 +48,7 @@
             required
           ></Datepicker>
           <br />
+
           <v-file-input
             @change="preview"
             v-model="imagen"
@@ -67,6 +73,7 @@
 
 <script>
 export default {
+  inheritAttrs: false,
   data() {
     return {
       nombre: "",

@@ -21,6 +21,7 @@
 <script>
 export default {
   name: "iniciar-sesion",
+  inheritAttrs: false,
   data: function () {
     return {
       usuario: "",

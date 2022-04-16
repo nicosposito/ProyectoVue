@@ -24,7 +24,7 @@
       </v-btn>
     </v-toolbar>
 
-    <router-view/>
+    <router-view v-bind:listap="lista" />
 
     <v-navigation-drawer v-model="mostrar" temporary app>
       <v-list-item
@@ -42,7 +42,7 @@
         ></v-list-item>
         <v-list-item
           title="Eliminar pelicula"
-          value="EP"
+          value="EP" 
           to="/eliminarPelicula"
         >
         </v-list-item>
@@ -66,6 +66,7 @@ export default {
       mostrar: true,
       nombreUsuario: "",
       esAdm: false,
+      value: ""
     };
   },
   props: ["lista"],

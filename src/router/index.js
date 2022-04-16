@@ -34,9 +34,6 @@ const routes = [
     name: 'eliminarPelicula',
     component: () => import(/* webpackChunkName: "about" */ '../views/EliminarPeliculaView.vue'),
     props: true,
-    meta: {
-      hide: true,
-     }
   }
 
 ]
