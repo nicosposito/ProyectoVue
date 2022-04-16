@@ -34,7 +34,7 @@
       </v-list-item>
       <v-divider></v-divider>
 
-      <v-list density="compact" nav v-if="nombreUsuario != ''">
+      <v-list density="compact" nav v-if="nombreUsuario != '' && esAdm=='true'">
         <v-list-item
           title="Agregar pelicula"
           value="AP"
@@ -48,7 +48,7 @@
         </v-list-item>
       </v-list>
 
-      <v-list density="compact" v-if="nombreUsuario == ''">
+      <v-list density="compact" v-if="nombreUsuario == '' ">
         <v-list-item
           title="Iniciar sesión"
           value="IS"
@@ -65,7 +65,7 @@ export default {
     return {
       mostrar: true,
       nombreUsuario: "",
-      esAdm: false,
+      esAdm: "false",
       value: ""
     };
   },
@@ -73,11 +73,10 @@ export default {
   methods: {
     cerrarSesion: function () {
       localStorage.removeItem("usuario");
+      localStorage.removeItem("esAdm");
       this.nombreUsuario = "";
-    },
-    pedirInfo() {
-      // this.eventBus.emit('pedirInfo',true);
-      this.$router.push("/eliminarPelicula");
+      this.esAdm = "false";
+      this.$router.push("/");
     },
   },
   mounted() {

@@ -93,6 +93,7 @@ export default {
         "Musical",
         "Suspenso",
         "Terror",
+        "Superheroe"
       ],
       url: "",
     };
