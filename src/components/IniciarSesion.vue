@@ -1,20 +1,21 @@
 <template>
-    <v-main class="grey lighten-3">
-      <v-form>
-        <v-card>
-          <v-card-text>
-            <v-text-field label="Usuario" v-model="usuario" />
-            <v-text-field label="Contraseña" type="password" v-model="clave" />
-            <p v-if="error" class="error">
-              Has introducido mal el usuario o la contraseña.
-            </p>
-          </v-card-text>
-         
-            <v-btn v-on:click="puedeLogear" color="success"> Iniciar Sesion </v-btn>
-          
-        </v-card>
+    <span class="bg"></span>
+    <v-card id="card">
+      <v-card-title class= "container">Inicio de sesión</v-card-title>
+      <v-form @submit.prevent="puedeLogear">
+        <v-card-text class="text-center">
+          <v-text-field label="Usuario" v-model="usuario" />
+          <v-text-field label="Contraseña" type="password" v-model="clave" />
+          <p v-if="error" class="container">
+            Has introducido mal el usuario o la contraseña.
+          </p>
+        </v-card-text>
+        <div class="container">
+          <v-btn type="submit" color="success">Iniciar Sesion</v-btn>
+          <v-btn flat color="error">Volver al inicio</v-btn>
+        </div>
       </v-form>
-    </v-main>
+    </v-card>
 </template>
 
 <script>
@@ -31,7 +32,7 @@ export default {
           contrasena: "123",
           esAdm: true,
         },
-         {
+        {
           usuario: "Pepe",
           contrasena: "123",
           esAdm: false,
@@ -46,7 +47,7 @@ export default {
         if (user.contrasena == this.clave) {
           localStorage.setItem("usuario", this.usuario);
           localStorage.setItem("esAdm", user.esAdm);
-          this.eventBus.emit('recargar',true); //Para poder recargar el componente y cargue la nueva informacion de inicio de sesion.
+          this.eventBus.emit("recargar", true); //Para poder recargar el componente y cargue la nueva informacion de inicio de sesion.
           this.$router.push("/"); //Lo envio a la ruta "/" la cual es home
         } else {
           this.error = true;
@@ -59,6 +60,43 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.v-btn {
+  margin: 0;
+  display: inline-block;
+  margin-right: 100px;
+  margin-left: 100px;
+  margin-bottom: 20px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.v-card {
+  border: 1px solid black;
+   position: absolute; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+
+.bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url(/resources/cineLogin.jpg)
+    no-repeat center center;
+  background-size: cover;
+  background-color: black;
+  transform: scale(1.1);
+}
+
+
 </style>
 

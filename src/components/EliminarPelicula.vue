@@ -1,17 +1,53 @@
 <template>
-  <div>
-    <div v-bind:key="pelicula.nombre" v-for="pelicula in $parent.peliculas">
-      <div class="todo-actions"> XD {{pelicula.nombre}}
-        <button @click="$emit('delete-todo', pelicula.nombre)">Eliminar</button>
-      </div>
+  <v-app>
+    <div>
+      <h1 text-align: center>Eliminar Pelicula</h1>
+      <v-table
+        fixed-header
+        style="width: 400px; border: 1px solid black"
+        class="center"
+      >
+        <thead>
+          <tr>
+            <th class="text-left">Nombre</th>
+            <th class="text-left">Genero</th>
+            <th class="text-left">Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="pelicula in listap" :key="pelicula.nombre">
+            <td>{{ pelicula.nombre }}</td>
+            <td>{{ pelicula.genero }}</td>
+            <td>
+              <v-btn
+                flat
+                color="error"
+                @click="this.eventBus.emit('eliminarPelicula', pelicula.nombre)"
+                >Eliminar</v-btn
+              >
+            </td>
+          </tr>
+        </tbody>
+      </v-table>
     </div>
-  </div>
+  </v-app>
 </template>
 
 <script>
 export default {
-  props: ["peliculaslist"],
+  props: ["listap"],
 };
 </script>
 
-<style></style> 
+<style>
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1 {
+  text-align: center;
+  padding: 30px;
+}
+</style> 

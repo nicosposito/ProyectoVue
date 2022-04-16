@@ -1,12 +1,12 @@
 <template>
-
-    <app-nav :key="componentKey"></app-nav>
-  
+  <app-nav :key="componentKey" v-bind:lista="peliculas"></app-nav>
+    <eliminar-pelicula v-if="false" v-bind:listap="peliculas" />
 </template>
 
 
 <script>
 import AppNav from "./components/AppNav.vue";
+import EliminarPelicula from "./components/EliminarPelicula.vue";
 
 export default {
   created: function () {
@@ -18,9 +18,12 @@ export default {
     });
     this.eventBus.on("eliminarPelicula", (nombre) => {
       this.eliminarPelicula(nombre);
-      });
+    });
+    this.eventBus.on("pedirInfo", (opc) => {
+      this.darInfo();
+    });
   },
-  
+
   data() {
     return {
       componentKey: 0,
@@ -33,8 +36,16 @@ export default {
           genero: "asd",
           duracion: "145",
         },
+        {
+          nombre: "Peli2",
+          sinopsis: "asd",
+          director: "asd",
+          fechaEstreno: "14-04-2022",
+          genero: "asd",
+          duracion: "145",
+        },
       ],
-      copiaPeliculas:[]
+      copiaPeliculas: [],
     };
   },
   methods: {
@@ -42,42 +53,27 @@ export default {
       this.componentKey += 1;
     },
     agregarPelicula(pelicula) {
-     this.peliculas.push(pelicula);
-     this.copiaPeliculas = [...this.peliculas];
+      this.peliculas.push(pelicula);
+      this.copiaPeliculas = [...this.peliculas];
     },
 
     eliminarPelicula(nombre) {
-      this.peliculas = this.peliculas.filter(pelicula => pelicula.nombre != nombre);
+      this.peliculas = this.peliculas.filter(
+        (pelicula) => pelicula.nombre != nombre
+      );
       this.copiaPeliculas = [...this.peliculas];
-    }
-
+    },
+    darInfo() {
+      localStorage.setItem("listaPeliculas", this.peliculas);
+    },
   },
   components: {
     AppNav,
+    EliminarPelicula,
   },
 };
 </script>
 
 
-<style lang="scss" scopped>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+<style >
 </style>
