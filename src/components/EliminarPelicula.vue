@@ -4,10 +4,11 @@
       <h1 text-align: center>Eliminar Pelicula</h1>
       <v-table
         fixed-header
-        style="width: 600px; border: 1px solid black"
+        style="width: 800px; border: 1px solid black"
         class="center">
         <thead>
           <tr>
+            <th class="text-left">Poster</th>
             <th class="text-left">Nombre</th>
             <th class="text-left">Genero</th>
             <th class="text-left">Acción</th>
@@ -15,6 +16,7 @@
         </thead>
         <tbody>
           <tr v-for="pelicula in listap" :key="pelicula.nombre">
+            <td> <v-img :src="pelicula.imgSrc"></v-img> </td>
             <td>{{ pelicula.nombre }}</td>
             <td>{{ pelicula.genero }}</td>
             <td>
