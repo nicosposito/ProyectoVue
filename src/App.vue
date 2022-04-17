@@ -1,5 +1,5 @@
 <template>
-  <app-nav :key="componentKey" v-bind:lista="peliculas"></app-nav>
+  <app-nav :key="componentKey" v-bind:lista="copiaPeliculas"></app-nav>
 </template>
 
 
@@ -20,6 +20,10 @@ export default {
     this.eventBus.on("pedirInfo", (opc) => {
       this.darInfo();
     });
+    this.eventBus.on("buscarPelicula", (query) => {
+      this.buscarPelicula(query);
+    });
+    this.copiaPeliculas = [... this.peliculas];
   },
 
   data() {
@@ -71,7 +75,6 @@ export default {
       this.peliculas.push(pelicula);
       this.copiaPeliculas = [...this.peliculas];
     },
-
     eliminarPelicula(nombre) {
       this.peliculas = this.peliculas.filter(
         (pelicula) => pelicula.nombre != nombre
@@ -81,6 +84,18 @@ export default {
     darInfo() {
       localStorage.setItem("listaPeliculas", this.peliculas);
     },
+    buscarPelicula(query) {
+      if(query.trim()==''){
+        this.copiaPeliculas = [... this.peliculas];
+      }else{
+        const temp = this.peliculas.filter(
+          pelicula => {
+            return pelicula.nombre.toLowerCase().includes(query.toLowerCase());
+          }
+        );
+        this.copiaPeliculas = [... temp];
+      }
+    }
   },
   components: {
     AppNav,

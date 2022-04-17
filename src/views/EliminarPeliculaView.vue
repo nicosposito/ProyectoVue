@@ -9,7 +9,6 @@ import EliminarPelicula from '../components/EliminarPelicula.vue';
 export default {
         components: {
             'eliminar-pelicula': EliminarPelicula
-
         }
 }
 
