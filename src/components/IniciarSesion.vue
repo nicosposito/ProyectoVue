@@ -12,7 +12,7 @@
         </v-card-text>
         <div class="container">
           <v-btn type="submit" color="success">Iniciar Sesion</v-btn>
-          <v-btn flat color="error">Volver al inicio</v-btn>
+          <v-btn @click="this.$router.push('/')" color="error">Volver al inicio</v-btn>
         </div>
       </v-form>
     </v-card>

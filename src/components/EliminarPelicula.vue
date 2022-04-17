@@ -5,8 +5,7 @@
       <v-table
         fixed-header
         style="width: 600px; border: 1px solid black"
-        class="center"
-      >
+        class="center">
         <thead>
           <tr>
             <th class="text-left">Nombre</th>
