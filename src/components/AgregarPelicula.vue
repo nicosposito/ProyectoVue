@@ -107,13 +107,13 @@ export default {
         fechaEstreno: this.fechaEstreno,
         genero: this.genero,
         duracion: this.duracion,
+        imgSrc: this.url
       };
       this.eventBus.emit("agregarPelicula", newPelicula);
     },
     preview(e) {
       const file = e.target.files[0];
       this.url = URL.createObjectURL(file);
-      console.log(this.url);
     },
   },
 };

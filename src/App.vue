@@ -7,6 +7,7 @@
 import AppNav from "./components/AppNav.vue";
 
 export default {
+
   created: function () {
     this.eventBus.on("recargar", (opc) => {
       this.forceRerender();
@@ -20,6 +21,7 @@ export default {
     this.eventBus.on("pedirInfo", (opc) => {
       this.darInfo();
     });
+
   },
 
   data() {
@@ -34,6 +36,7 @@ export default {
           fechaEstreno: "04-03-2022",
           genero: "Superheroe",
           duracion: "176",
+          imgSrc: "https://www.quepeliculaver.com/uploads/2021/12/7YncShtIGNJP5euTPSZGxGsImaN.jpg",
         },
         {
           nombre: "Spider-Man: Sin camino a casa",
@@ -42,6 +45,7 @@ export default {
           fechaEstreno: "17-12-2021",
           genero: "Superheroe",
           duracion: "148",
+          imgSrc: "https://funaticonews.com/wp-content/uploads/2021/11/cines-poster-afiche-spiderman-spider-man-sin-camino-a-casa-no-way-out-preventa-peru.jpg"
         },
         {
           nombre: "Doctor Strange: En el multiverso de la locura",
@@ -50,7 +54,8 @@ export default {
           fechaEstreno: "06-05-2022",
           genero: "Superheroe",
           duracion: "126",
-        },
+          imgSrc: "https://dam.smashmexico.com.mx/wp-content/uploads/2022/02/doctor-strange-nuevo-poster.jpg"
+        }, 
         {
           nombre: "Animales fantasticos: Los secretos de Dumbledore",
           sinopsis: "Ante una severa amenaza, el magizoólogo Newt Scamander lidera a un valiente grupo de magos y brujas que busca detener al malvado Gellert Grindelwald.",
@@ -58,6 +63,7 @@ export default {
           fechaEstreno: "08-04-2022",
           genero: "Fantasia",
           duracion: "143",
+           imgSrc:"https://pbs.twimg.com/media/FNQYjOUXEAAIVYy?format=jpg&name=4096x4096"
         },
       ],
       copiaPeliculas: [],
