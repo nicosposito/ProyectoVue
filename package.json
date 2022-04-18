@@ -16,6 +16,7 @@
     "vue": "^3.2.13",
     "vue-router": "^4.0.14",
     "vue-sessionstorage": "^1.0.0",
+    "vue-sweetalert2": "^5.0.2",
     "vue-web-storage": "^6.1.0",
     "vuetify": "npm:@vuetify/nightly@next",
     "webfontloader": "^1.0.0"
