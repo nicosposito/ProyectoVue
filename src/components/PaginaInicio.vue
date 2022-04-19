@@ -1,12 +1,14 @@
 <template>
   <v-app>
-    <div style="width: 70%"
-    class="center">
+    <div style="width: 70%" class="center">
       <h1 text-align: center>Películas disponibles</h1>
-      <input type="text" v-model="query" @input="this.eventBus.emit('buscarPelicula', query)" placeholder="Búsqueda por título">
-      <v-table
-        fixed-header
-        style="border: 1px solid black">
+      <input
+        type="text"
+        v-model="query"
+        @input="this.eventBus.emit('buscarPelicula', query)"
+        placeholder="Búsqueda por título"
+      />
+      <v-table fixed-header style="border: 1px solid black">
         <thead>
           <tr>
             <th class="text-left">Nombre</th>
@@ -15,7 +17,6 @@
             <th class="text-left">Estreno</th>
             <th class="text-left">Duración</th>
           </tr>
-
         </thead>
         <tbody>
           <tr v-for="pelicula in listap" :key="pelicula.nombre">
@@ -24,6 +25,21 @@
             <td>{{ pelicula.director }}</td>
             <td>{{ pelicula.fechaEstreno }}</td>
             <td>{{ pelicula.duracion }}</td>
+            <td>
+              <v-btn
+                flat
+                color="error"
+                @click="
+                  this.$router.push({
+                    name: 'infoPelicula',
+                    params: {
+                      nombrePeli: pelicula.nombre
+                    },
+                  })
+                "
+                >Ver info</v-btn
+              >
+            </td>
           </tr>
         </tbody>
       </v-table>
@@ -31,32 +47,31 @@
   </v-app>
 </template>
 <script>
-
 export default {
-  name: 'PaginaInicio',
+  name: "PaginaInicio",
   props: ["listap"],
-  data(){
-        return{
-            query: ''
-        }
-    }
+  data() {
+    return {
+      query: "",
+    };
+  },
 };
 </script>
 <style scoped>
-  input{
-    width:100%;
-    border: solid 1px silver;
-    text-align: right;
-    margin-bottom: 5px;
-    padding: 3px 10px;
-  }
-  .center {
-    margin-left: auto;
-    margin-right: auto;
-  }
+input {
+  width: 100%;
+  border: solid 1px silver;
+  text-align: right;
+  margin-bottom: 5px;
+  padding: 3px 10px;
+}
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
 
-  h1 {
-    text-align: center;
-    padding: 30px;
-  }
+h1 {
+  text-align: center;
+  padding: 30px;
+}
 </style>

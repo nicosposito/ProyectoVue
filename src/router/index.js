@@ -21,7 +21,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/LoginView.vue'),
     meta: {
       hideNavbar: true,
-     }
+    }
   },
   {
     path: '/agregarPelicula',
@@ -34,8 +34,14 @@ const routes = [
     name: 'eliminarPelicula',
     component: () => import(/* webpackChunkName: "about" */ '../views/EliminarPeliculaView.vue'),
     props: true,
-  }
+  },
+  {
+    path: '/infoPelicula',
+    name: 'infoPelicula',
+    component: () => import(/* webpackChunkName: "about" */ '../views/InfoPeliculaView.vue'),
+    props: true,
 
+  }
 ]
 
 const router = createRouter({

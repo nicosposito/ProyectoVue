@@ -5,7 +5,8 @@
       <v-table
         fixed-header
         style="width: 800px; border: 1px solid black"
-        class="center">
+        class="center"
+      >
         <thead>
           <tr>
             <th class="text-left">Poster</th>
@@ -16,14 +17,14 @@
         </thead>
         <tbody>
           <tr v-for="pelicula in listap" :key="pelicula.nombre">
-            <td> <v-img :src="pelicula.imgSrc"></v-img> </td>
+            <td><v-img :src="pelicula.imgSrc"></v-img></td>
             <td>{{ pelicula.nombre }}</td>
             <td>{{ pelicula.genero }}</td>
             <td>
               <v-btn
                 flat
                 color="error"
-                @click="this.eventBus.emit('eliminarPelicula', pelicula.nombre)"
+                @click="eliminarBoton(pelicula.nombre)"
                 >Eliminar</v-btn
               >
             </td>
@@ -37,11 +38,31 @@
 <script>
 export default {
   props: ["listap"],
+
+  methods: {
+    eliminarBoton(nombre) {
+      this.$swal
+        .fire({
+          title: "Estas seguro?",
+          text: "No podras revertir esto.",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Eliminar",
+          cancelButtonText: "Cancelar",
+        })
+        .then((result) => {
+          if (result.isConfirmed) {
+            this.eventBus.emit('eliminarPelicula', nombre)
+          }
+        });
+    },
+  },
 };
 </script>
 
 <style>
-
 .center {
   margin-left: auto;
   margin-right: auto;
