@@ -87,7 +87,7 @@
         <v-btn flat color="success" @click="validarFecha()" type="submit"
           >Agregar</v-btn
         >
-        <v-btn flat color="red" @click="cancelarBoton()">Cancelar</v-btn>
+        <v-btn flat color="error" @click="cancelarBoton()">Cancelar</v-btn>
       </div>
     </v-form>
   </v-container>
@@ -105,7 +105,6 @@ export default {
 
   setup() {
     const fecha = ref(new Date());
-    // In case of a range picker, you'll receive [Date, Date]
     const formato = (fecha) => {
       const day = fecha.getDate();
       const month = fecha.getMonth() + 1;

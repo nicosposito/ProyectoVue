@@ -1,9 +1,9 @@
 <template>
   <h1>Información de pelicula</h1>
   <v-container>
-    <v-card-title class="justify-center">
-      {{ pelicula.nombre }}
-    </v-card-title>
+    <div>
+      <h1 id="tituloPeli">{{ pelicula.nombre }}</h1>
+    </div>
     <v-row>
       <v-col md="3">
         <div class="d-flex flex-no-wrap">
@@ -12,25 +12,25 @@
           </v-avatar>
         </div>
       </v-col>
-      <v-col md="4">
+      <v-col md="6">
         <div class="d-flex flex-column">
-          <h1>Sinopsis:</h1>
+          <h3>Sinopsis:</h3>
           <label id="sinopsis">{{ pelicula.sinopsis }}</label
           ><br />
-          <h1>Otros datos:</h1>
-          <label>Director: {{ pelicula.director }}.</label
-          ><br />
-          <label>Genero: {{ pelicula.genero }}.</label
-          ><br />
-          <label>Duración: {{ pelicula.duracion }} minutos.</label
-          >
+          <h3>Otros datos:</h3>
+          <label><b>Director:</b> {{ pelicula.director }}.</label><br />
+          <label><b>Genero:</b> {{ pelicula.genero }}.</label><br />
+          <label><b>Duración:</b> {{ pelicula.duracion }} minutos.</label>
           <br />
         </div>
       </v-col>
     </v-row>
+    <div id="btn_inicio">
+    <v-btn color="error" to="/" >Volver al inicio</v-btn>
+    </div>
   </v-container>
 </template>
-
+    
 <script>
 export default {
   props: ["listap", "nombrePeli"],
@@ -40,6 +40,13 @@ export default {
       pelicula: this.listap.find((peli) => peli.nombre == this.nombrePeli),
     };
   },
+
+  created(){
+    if (this.pelicula==null){
+      var nombrep=localStorage.getItem("nombrePeli");
+      this.pelicula=this.listap.find((peli) => peli.nombre == nombrep)
+    }
+  }
 };
 </script>
 
@@ -54,11 +61,16 @@ h1 {
   padding: 30px;
 }
 
+#tituloPeli {
+  text-align: center;
+  padding: 0px;
+}
+
 .v-card {
   border: 1px solid black;
 }
 
-#sinopsis{
+#sinopsis {
   display: inline-block;
   text-align: left;
 }
@@ -66,5 +78,16 @@ h1 {
 .v-container {
   border: 1px solid black;
   padding: 30px;
+}
+
+h3 {
+  text-align: center;
+  padding: 20px;
+}
+
+#btn_inicio{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

@@ -16,6 +16,7 @@
             <th class="text-left">Director</th>
             <th class="text-left">Estreno</th>
             <th class="text-left">Duración</th>
+            <th class="text-left">Acción</th>
           </tr>
         </thead>
         <tbody>
@@ -28,15 +29,8 @@
             <td>
               <v-btn
                 flat
-                color="error"
-                @click="
-                  this.$router.push({
-                    name: 'infoPelicula',
-                    params: {
-                      nombrePeli: pelicula.nombre
-                    },
-                  })
-                "
+                color="blue"
+                @click="infoPeli(pelicula.nombre)"
                 >Ver info</v-btn
               >
             </td>
@@ -54,6 +48,18 @@ export default {
     return {
       query: "",
     };
+  },
+
+  methods: {
+    infoPeli(nombrePelicula) {
+      localStorage.setItem("nombrePeli", nombrePelicula);
+      this.$router.push({
+        name: "infoPelicula",
+        params: {
+          nombrePeli: nombrePelicula,
+        },
+      });
+    },
   },
 };
 </script>

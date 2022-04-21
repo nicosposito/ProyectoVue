@@ -7,8 +7,7 @@
       >
       <v-spacer></v-spacer>
       <div v-if="nombreUsuario == ''">
-        <v-btn to="/" class="success">Home</v-btn>
-        <v-btn to="/about" class="success">About</v-btn>
+        <v-btn to="/" class="success">Inicio</v-btn>
         <v-btn id="iniciarsesion" to="/iniciarSesion">Ingresar</v-btn>
       </div>
       <span v-if="nombreUsuario != ''"
@@ -83,7 +82,6 @@ export default {
     if (localStorage.getItem("usuario") != null) {
       this.nombreUsuario = localStorage.getItem("usuario");
       this.esAdm = localStorage.getItem("esAdm");
-      console.log(this.esAdm);
     }
   },
 };
