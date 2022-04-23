@@ -5,8 +5,7 @@
       ref="form"
       @submit.prevent="addNuevaPelicula"
       lazy-validation
-      class="px-3"
-    >
+      class="px-3">
       <v-row>
         <v-col md="6">
           <v-text-field
@@ -30,7 +29,6 @@
             required
           ></v-text-field>
 
-          <!--- Genero -->
           <v-select
             v-model="genero"
             :items="generos"
@@ -41,7 +39,6 @@
         </v-col>
 
         <v-col md="6">
-          <!---Duracion -->
           <v-text-field
             v-model="duracion"
             suffix="minutos"
@@ -91,20 +88,15 @@
       </div>
     </v-form>
   </v-container>
-  <br />
-  <br />
-  <br />
 </template>
 
 
 <script>
 import { ref } from "vue";
-
 export default {
-  inheritAttrs: false,
-
-  setup() {
-    const fecha = ref(new Date());
+  inheritAttrs: false, //Importante
+  setup() { //Importante
+    const fecha = ref(new Date()); //Mencion
     const formato = (fecha) => {
       const day = fecha.getDate();
       const month = fecha.getMonth() + 1;
@@ -162,7 +154,7 @@ export default {
           imgSrc: this.url,
         };
         this.error = 0;
-        this.eventBus.emit("agregarPelicula", newPelicula);
+        this.eventBus.emit("agregarPelicula", newPelicula); //Emitimos un evento
         this.ingresarBoton();
       }
     },
@@ -182,7 +174,7 @@ export default {
         })
         .then((result) => {
           if (result.isConfirmed) {
-            this.$router.push("/");
+            this.$router.push("/"); //Cambiamos de vista
           }
         });
     },
@@ -199,8 +191,8 @@ export default {
         })
         .then((result) => {
           if (result.isConfirmed) {
-            this.url = ""
-            this.nombre = ""
+            this.url = "";
+            this.nombre = "";
           } else if (result.isDenied) {
             this.$router.push("/");
           }
@@ -216,15 +208,12 @@ export default {
         this.error = 0;
       }
     },
-    limpiarForm() {
-      this.$refs.form.resetValidation();
-      this.$refs.form.reset();
-    },
   },
 };
 </script>
 
 <style scoped>
+/* Importante */
 .v-col {
   float: left;
   width: 50%;

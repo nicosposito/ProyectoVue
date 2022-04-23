@@ -49,16 +49,15 @@ export default {
       query: "",
     };
   },
-
   methods: {
     infoPeli(nombrePelicula) {
-      localStorage.setItem("nombrePeli", nombrePelicula);
+      localStorage.setItem("nombrePeli", nombrePelicula); //Por si quisieramos recargar
       this.$router.push({
         name: "infoPelicula",
         params: {
           nombrePeli: nombrePelicula,
         },
-      });
+      }); //Cambio de vista pero pasando parametros
     },
   },
 };

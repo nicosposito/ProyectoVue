@@ -1,10 +1,9 @@
 <template>
   <v-app>
-    <v-toolbar v-if="!$route.meta.hideNavbar" color="blue">
-      <v-app-bar-nav-icon @click="mostrar = !mostrar"></v-app-bar-nav-icon>
+    <v-toolbar v-if="!$route.meta.hideNavbar" color="blue"> <!-- Importante -->
+      <v-app-bar-nav-icon @click="mostrar = !mostrar"></v-app-bar-nav-icon> <!-- Importante -->
       <v-toolbar-title style="cursor: pointer" @click="$router.push('/')"
-        >ProyectoVue</v-toolbar-title
-      >
+        >ProyectoVue</v-toolbar-title> <!-- Importante -->
       <v-spacer></v-spacer>
       <div v-if="nombreUsuario == ''">
         <v-btn to="/" class="success">Inicio</v-btn>
@@ -23,7 +22,7 @@
       </v-btn>
     </v-toolbar>
 
-    <router-view v-bind:listap="lista" />
+    <router-view v-bind:listap="lista" />  <!-- Importante -->
 
     <v-navigation-drawer v-model="mostrar" temporary app>
       <v-list-item
@@ -36,12 +35,10 @@
       <v-list density="compact" nav v-if="nombreUsuario != '' && esAdm=='true'">
         <v-list-item
           title="Agregar pelicula"
-          value="AP"
           to="/agregarPelicula"
         ></v-list-item>
         <v-list-item
           title="Eliminar pelicula"
-          value="EP" 
           to="/eliminarPelicula"
         >
         </v-list-item>
@@ -50,7 +47,6 @@
       <v-list density="compact" v-if="nombreUsuario == '' ">
         <v-list-item
           title="Iniciar sesión"
-          value="IS"
           to="/iniciarSesion"
         ></v-list-item>
       </v-list>
@@ -65,20 +61,20 @@ export default {
       mostrar: true,
       nombreUsuario: "",
       esAdm: "false",
-      value: ""
     };
   },
-  props: ["lista"],
+  props: ["lista"], //Importante
+  
   methods: {
-    cerrarSesion: function () {
-      localStorage.removeItem("usuario");
+    cerrarSesion: function () { //Importante
+      localStorage.removeItem("usuario"); 
       localStorage.removeItem("esAdm");
       this.nombreUsuario = "";
       this.esAdm = "false";
       this.$router.push("/");
     },
   },
-  mounted() {
+  mounted() { //Ciclo de vida
     if (localStorage.getItem("usuario") != null) {
       this.nombreUsuario = localStorage.getItem("usuario");
       this.esAdm = localStorage.getItem("esAdm");
@@ -87,7 +83,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped> /*Importante */
 * {
   text-transform: none !important;
 } /* Sacar mayusuculas */

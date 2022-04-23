@@ -16,7 +16,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="pelicula in listap" :key="pelicula.nombre">
+          <tr v-for="pelicula in listap" :key="pelicula.nombre"> <!-- Importante -->
             <td><v-img :src="pelicula.imgSrc"></v-img></td>
             <td>{{ pelicula.nombre }}</td>
             <td>{{ pelicula.genero }}</td>
@@ -24,9 +24,7 @@
               <v-btn
                 flat
                 color="error"
-                @click="eliminarBoton(pelicula.nombre)"
-                >Eliminar</v-btn
-              >
+                @click="eliminarBoton(pelicula.nombre)">Eliminar</v-btn>
             </td>
           </tr>
         </tbody>
@@ -37,13 +35,13 @@
 
 <script>
 export default {
-  props: ["listap"],
+  props: ["listap"], //Importante
 
   methods: {
     eliminarBoton(nombre) {
       this.$swal
         .fire({
-          title: "Estas seguro?",
+          title:"Estas seguro?",
           text: "No podras revertir esto.",
           icon: "warning",
           showCancelButton: true,
@@ -54,7 +52,7 @@ export default {
         })
         .then((result) => {
           if (result.isConfirmed) {
-            this.eventBus.emit('eliminarPelicula', nombre)
+            this.eventBus.emit('eliminarPelicula', nombre) //Evento
           }
         });
     },

@@ -33,7 +33,7 @@
     
 <script>
 export default {
-  props: ["listap", "nombrePeli"],
+  props: ["listap", "nombrePeli"], //Importante
 
   data() {
     return {
