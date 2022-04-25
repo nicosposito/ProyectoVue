@@ -5,7 +5,8 @@
       ref="form"
       @submit.prevent="addNuevaPelicula"
       lazy-validation
-      class="px-3">
+      class="px-3"
+    >
       <v-row>
         <v-col md="6">
           <v-text-field
@@ -94,8 +95,10 @@
 <script>
 import { ref } from "vue";
 export default {
+  name: "AgregarPelicula",
   inheritAttrs: false, //Importante
-  setup() { //Importante
+  setup() {
+    //Importante
     const fecha = ref(new Date()); //Mencion
     const formato = (fecha) => {
       const day = fecha.getDate();
@@ -156,6 +159,7 @@ export default {
         this.error = 0;
         this.eventBus.emit("agregarPelicula", newPelicula); //Emitimos un evento
         this.ingresarBoton();
+        this.$router.push("/");
       }
     },
     preview(e) {
@@ -184,18 +188,12 @@ export default {
           position: "center",
           icon: "success",
           title: "Pelicula añadida correctamente",
-          showConfirmButton: true,
-          showDenyButton: true,
-          confirmButtonText: `Añadir otra`,
-          denyButtonText: "Volver al inicio",
+          text: "Volviendo al inicio",
+          showConfirmButton: false,
+          timer: 1500,
         })
-        .then((result) => {
-          if (result.isConfirmed) {
-            this.url = "";
-            this.nombre = "";
-          } else if (result.isDenied) {
-            this.$router.push("/");
-          }
+        .then(() => {
+          this.$router.push("/");
         });
     },
     limpiarURL() {

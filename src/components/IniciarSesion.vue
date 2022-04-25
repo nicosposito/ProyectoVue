@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  name: "iniciar-sesion",
+  name: "IniciarSesion",
   inheritAttrs: false,
   data () {
     return {

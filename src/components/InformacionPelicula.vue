@@ -33,6 +33,7 @@
     
 <script>
 export default {
+  name: "InformacionPelicula",
   props: ["listap", "nombrePeli"], //Importante
 
   data() {

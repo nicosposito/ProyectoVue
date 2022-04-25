@@ -2,7 +2,6 @@
   <app-nav :key="componentKey" v-bind:lista="copiaPeliculas"></app-nav> 
 </template>
 
-
 <script>
 import AppNav from "./components/AppNav.vue"; //Importando componente
 
@@ -17,9 +16,6 @@ export default { //Importante
     });
     this.eventBus.on("eliminarPelicula", (nombre) => {
       this.eliminarPelicula(nombre);
-    });
-    this.eventBus.on("pedirInfo", (opc) => {
-      this.darInfo();
     });
     this.eventBus.on("buscarPelicula", (query) => {
       this.buscarPelicula(query);
