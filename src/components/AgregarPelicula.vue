@@ -3,7 +3,7 @@
   <v-container>
     <v-form
       ref="form"
-      @submit.prevent="addNuevaPelicula"
+      @submit="addNuevaPelicula"
       lazy-validation
       class="px-3"
     >

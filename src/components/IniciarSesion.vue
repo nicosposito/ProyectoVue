@@ -2,7 +2,7 @@
     <span class="bg"></span>
     <v-card id="card">
       <v-card-title class= "container">Inicio de sesión</v-card-title>
-      <v-form @submit.prevent="puedeLogear"> <!-- Evento -->
+      <v-form @submit="puedeLogear"> <!-- Evento -->
         <v-card-text class="text-center">
           <v-text-field label="Usuario" v-model="usuario" /> <!-- Importante -->
           <v-text-field label="Contraseña" type="password" v-model="clave" />
