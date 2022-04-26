@@ -101,7 +101,7 @@ export default { //Importante
     },
   },
   components: {
-    AppNav,
+    'app-nav':AppNav,
   },
 };
 </script>

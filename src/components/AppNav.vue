@@ -26,7 +26,7 @@
 
     <v-navigation-drawer v-model="mostrar" temporary app>
       <v-list-item
-        prepend-avatar="https://randomuser.me/api/portraits/men/78.jpg"
+        prepend-avatar="https://cdn-icons-png.flaticon.com/512/74/74472.png"
         v-if="nombreUsuario != ''"
         >{{ this.nombreUsuario }}
       </v-list-item>

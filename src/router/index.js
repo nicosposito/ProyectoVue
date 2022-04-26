@@ -10,17 +10,9 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  },
-  {
     path: '/iniciarSesion',
     name: 'inicioSesion',
-    component: () => import(/* webpackChunkName: "about" */ '../views/LoginView.vue'),
+    component: () => import('../views/LoginView.vue'),
     meta: {
       hideNavbar: true,
     }
@@ -28,19 +20,19 @@ const routes = [
   {
     path: '/agregarPelicula',
     name: 'agregarPelicula',
-    component: () => import(/* webpackChunkName: "about" */ '../views/AgregarPeliculaView.vue'),
+    component: () => import('../views/AgregarPeliculaView.vue'),
 
   },
   {
     path: '/eliminarPelicula',
     name: 'eliminarPelicula',
-    component: () => import(/* webpackChunkName: "about" */ '../views/EliminarPeliculaView.vue'),
+    component: () => import('../views/EliminarPeliculaView.vue'),
     props: true,
   },
   {
     path: '/infoPelicula',
     name: 'infoPelicula',
-    component: () => import(/* webpackChunkName: "about" */ '../views/InfoPeliculaView.vue'),
+    component: () => import('../views/InfoPeliculaView.vue'),
     props: true,
 
   }
